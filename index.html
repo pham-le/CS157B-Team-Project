@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<style>
+			#container
+			{
+					padding-left: 2em;
+			}
+		</style>
+	</head>
+	<body>
+
+		<form action="" method="POST" onSubmit="">
+			<label for="report"><b>Report Type:</b></label><br/>
+			<div id="container">
+				<input type="radio" name="base" value="base">
+				Base Cube
+				<br/>
+				<input type="radio" name="roll" value="roll">
+				Roll Up
+				<br/>
+				<input type="radio" name="drill" value="drill">
+				Drill Down
+				<br/>
+				<input type="radio" name="slice" value="slice">
+				Slice
+				<br/>
+				<input type="radio" name="dice" value="dice">
+				Dice
+			</div>
+
+			<label for="dimensions"><b>Dimensions To Display:</b></label><br/>
+			<div id="container">
+				<input type="checkbox" name="dimensions" value="1"/>
+				Dimension 1
+				<br/>
+				<input type="checkbox" name="dimensions" value="2"/>
+				Dimension 2
+				<br/>
+				<input type="checkbox" name="dimensions" value="3"/>
+				Dimension 3.. whatever the names are blahdkjkdsf.. add more later
+			</div>
+
+
+			<p><input type="submit" value="Submit"></p>
+		</form>
+
+	</body>
+</html>
