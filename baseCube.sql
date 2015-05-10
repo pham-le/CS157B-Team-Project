@@ -1,9 +1,8 @@
 /*
-base cube: [table -> attribute]
-product -> category
-time -> month
-store -> store_state
-promotion -> ad_media_type
+base cube: [table VS attribute]
+product = category
+time = month
+store = store_state
 */
 SELECT t.Month, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(sf.customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit
 FROM Grocery.`Sales Fact` sf, Product p, Store s, Time t, Promotion pr
