@@ -5,7 +5,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `Product` CASCADE;
 CREATE TABLE `Product` (
-	`product_key` float,
+	`product_key` int not null primary key,
 	`description` varchar(255) NOT NULL,
 	`full_description` varchar(50) NOT NULL,
 	`SKU_number` float,
@@ -90,7 +90,7 @@ INSERT INTO `Product` (`product_key`, `description`, `full_description`, `SKU_nu
 
 DROP TABLE IF EXISTS `Promotion` CASCADE;
 CREATE TABLE `Promotion` (
-	`promotion_key` float,
+	`promotion_key` int not null primary key,
 	`promotion_name` varchar(255),
 	`price_reduction_type` varchar(255),
 	`ad_type` varchar(255),
@@ -118,10 +118,10 @@ INSERT INTO `Promotion` (`promotion_key`, `promotion_name`, `price_reduction_typ
 
 DROP TABLE IF EXISTS `Sales Fact` CASCADE;
 CREATE TABLE `Sales Fact` (
-	`time_key` float,
-	`product_key` float,
-	`promotion_key` float,
-	`store_key` float,
+	`time_key` int,
+	`product_key` int,
+	`promotion_key` int,
+	`store_key` int,
 	`dollar_sales` float,
 	`unit_sales` float,
 	`dollar_cost` float,
@@ -129,7 +129,11 @@ CREATE TABLE `Sales Fact` (
 	INDEX `product_key` (`product_key` ASC),
 	INDEX `promotion_key` (`promotion_key` ASC),
 	INDEX `store_key` (`store_key` ASC),
-	INDEX `time_key` (`time_key` ASC)
+	INDEX `time_key` (`time_key` ASC),
+    FOREIGN KEY (time_key) REFERENCES Time(time_key),
+    FOREIGN KEY (product_key) REFERENCES Product(product_key),
+    FOREIGN KEY (promotion_key) REFERENCES Promotion(promotion_key),
+    FOREIGN KEY (store_key) REFERENCES Store(store_key)
 );
 
 INSERT INTO `Sales Fact` (`time_key`, `product_key`, `promotion_key`, `store_key`, `dollar_sales`, `unit_sales`, `dollar_cost`, `customer_count`) VALUES (1, 1, 1, 15, 78.35, 58, 81.19, 38);
@@ -11175,7 +11179,7 @@ INSERT INTO `Sales Fact` (`time_key`, `product_key`, `promotion_key`, `store_key
 
 DROP TABLE IF EXISTS `Store` CASCADE;
 CREATE TABLE `Store` (
-	`store_key` float,
+	`store_key` int not null primary key,
 	`name` varchar(255) NOT NULL,
 	`store_number` float,
 	`store_street_address` varchar(255) NOT NULL,
@@ -11223,7 +11227,7 @@ INSERT INTO `Store` (`store_key`, `name`, `store_number`, `store_street_address`
 
 DROP TABLE IF EXISTS `Time` CASCADE;
 CREATE TABLE `Time` (
-	`time_key` float,
+	`time_key` int not null primary key,
 	`date` datetime,
 	`day_of_week` varchar(255) NOT NULL,
 	`day_number_in_month` float,
