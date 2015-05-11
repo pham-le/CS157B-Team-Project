@@ -1,0 +1,126 @@
+head, body
+{
+	background-color: #99CCFF;
+}
+
+div, p
+{
+	font-family: Arial, sans-serif;
+	background-color: #FFFFFF;
+}
+
+.main
+{
+	width: 900px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#buttons
+{
+	width: 850px;
+	margin: 0 auto;
+}
+
+#rollup_options, #drilldown_options
+{
+	width: 850;
+	margin: 0 auto;
+}
+
+#rollup_options
+{
+	display: none;
+}
+
+#drilldown_options
+{
+	display: none;
+}
+
+#slice_options
+{
+	display: none;
+}
+
+#dice_options
+{
+	display: none;
+}
+
+.time_text, .store_text
+{
+	padding-left: 55px;
+}
+
+.product_text
+{
+	padding-left: 50px;
+}
+
+
+.optionbutton
+{
+	background-color: #8AB8E6;
+	display: inline-block;
+	width: 175px;
+	height: 20px;
+	border: 1px solid #627383;
+	margin: 0px 40px 0px 40px;
+}
+
+.control
+{
+	display: inline-block;
+	margin: 10px;
+	background-color: #7AA3CC;
+	width: 120px;
+	height: 20px;
+	font-size: 18px;
+	padding: 20px 10px 20px 10px;
+	border: 1px solid #627383;
+}
+
+.control span.one
+{
+	margin-left: 33px;
+}
+
+.control span.two
+{
+	margin-left: 20px;
+}
+
+.control span.three
+{
+	margin-left: 10px;
+}
+
+.control span.four
+{
+	margin-left: 3px;
+}
+
+#tablearea
+{
+	width: 850;
+	margin: 0 auto;
+}
+
+table, tr, td, th
+{
+	border: 1px solid black;
+}
+
+td
+{
+	width: 100px;
+	text-align: center;
+}
+
+th
+{
+	width: 100px;
+	font-weight: bold;
+}
+
