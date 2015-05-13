@@ -44,6 +44,93 @@
 						<span class="three">BASE CUBE</span>
 					</div>
 					<hr/>
+					
+					
+					<div>Dimensions
+						<table width="100%">
+							<tr>
+								<th><input type="checkbox" name="dim" value="1"/>Product</th>
+								<th><input type="checkbox" name="dim" value="2"/>Store</th>
+								<th><input type="checkbox" name="dim" value="3"/>Time</th>
+								<th><input type="checkbox" name="dim" value="4"/>Promotion</th>
+							</tr>
+							<tr>
+								<td><span style="text-align:left">
+								<input type="checkbox" name="product" value="1"/>product_key<br/>
+								<input type="checkbox" name="product" value="2"/>description<br/>
+								<input type="checkbox" name="product" value="3"/>full_description<br/>
+								<input type="checkbox" name="product" value="4"/>SKU_number<br/>
+								<input type="checkbox" name="product" value="5"/>package_size<br/>
+								<input type="checkbox" name="product" value="6"/>brand<br/>
+								<input type="checkbox" name="product" value="7"/>subcategory<br/>
+								<input type="checkbox" name="product" value="8"/>category<br/>
+								<input type="checkbox" name="product" value="9"/>department<br/>
+								<input type="checkbox" name="product" value="10"/>package_type<br/>
+								<input type="checkbox" name="product" value="11"/>diet_type<br/>
+								<input type="checkbox" name="product" value="12"/>weight<br/>
+								<input type="checkbox" name="product" value="13"/>weight_unit_of_measure<br/>
+								<input type="checkbox" name="product" value="14"/>units_per_retail_case<br/>
+								<input type="checkbox" name="product" value="15"/>units_per_shipping_case<br/>
+								<input type="checkbox" name="product" value="16"/>cases_per_pallet<br/>
+								<input type="checkbox" name="product" value="17"/>shelf_width_cm<br/>
+								<input type="checkbox" name="product" value="18"/>shelf_height_cm<br/>
+								<input type="checkbox" name="product" value="19"/>shelf_depth_cm</span>
+								</td>
+								<td>
+								<input type="checkbox" name="store" value="1"/>store_key<br/>
+								<input type="checkbox" name="store" value="2"/>name<br/>
+								<input type="checkbox" name="store" value="3"/>store_number<br/>
+								<input type="checkbox" name="store" value="4"/>store_street_address<br/>
+								<input type="checkbox" name="store" value="5"/>city<br/>
+								<input type="checkbox" name="store" value="6"/>store_county<br/>
+								<input type="checkbox" name="store" value="7"/>store_state<br/>
+								<input type="checkbox" name="store" value="8"/>store_zip<br/>
+								<input type="checkbox" name="store" value="9"/>sales_district<br/>
+								<input type="checkbox" name="store" value="10"/>sales_region<br/>
+								<input type="checkbox" name="store" value="11"/>store_manager<br/>
+								<input type="checkbox" name="store" value="12"/>store_phone<br/>
+								<input type="checkbox" name="store" value="13"/>store_FAX<br/>
+								<input type="checkbox" name="store" value="14"/>floor_plan_type<br/>
+								<input type="checkbox" name="store" value="15"/>photo_processing_type<br/>
+								<input type="checkbox" name="store" value="16"/>finance_services_type<br/>
+								<input type="checkbox" name="store" value="17"/>first_opened_date<br/>
+								<input type="checkbox" name="store" value="18"/>last_remodel_date<br/>
+								<input type="checkbox" name="store" value="19"/>store_sqft<br/>
+								<input type="checkbox" name="store" value="20"/>grocery_sqft<br/>
+								<input type="checkbox" name="store" value="21"/>frozen_sqft<br/>
+								<input type="checkbox" name="store" value="22"/>meat_sqft
+								</td>
+								<td>
+								<input type="checkbox" name="time" value="1"/>time_key<br/>
+								<input type="checkbox" name="time" value="2"/>date<br/>
+								<input type="checkbox" name="time" value="3"/>day_of_week<br/>
+								<input type="checkbox" name="time" value="4"/>day_number_in_month<br/>
+								<input type="checkbox" name="time" value="5"/>day_number_overall<br/>
+								<input type="checkbox" name="time" value="6"/>week_number_in_year<br/>
+								<input type="checkbox" name="time" value="7"/>week_number_overall<br/>
+								<input type="checkbox" name="time" value="8"/>Month<br/>
+								<input type="checkbox" name="time" value="9"/>quarter<br/>
+								<input type="checkbox" name="time" value="10"/>fiscal_period<br/>
+								<input type="checkbox" name="time" value="11"/>year<br/>
+								<input type="checkbox" name="time" value="12"/>holiday_flag
+								</td>
+								<td>
+								<input type="checkbox" name="promotion" value="1"/>promotion_key<br/>
+								<input type="checkbox" name="promotion" value="1"/>promotion_name<br/>
+								<input type="checkbox" name="promotion" value="1"/>price_reduction_type<br/>
+								<input type="checkbox" name="promotion" value="1"/>ad_type<br/>
+								<input type="checkbox" name="promotion" value="1"/>display_type<br/>
+								<input type="checkbox" name="promotion" value="1"/>coupon_type<br/>
+								<input type="checkbox" name="promotion" value="1"/>ad_media_type<br/>
+								<input type="checkbox" name="promotion" value="1"/>display_provider<br/>
+								<input type="checkbox" name="promotion" value="1"/>promo_cost<br/>
+								<input type="checkbox" name="promotion" value="1"/>promo_begin_date<br/>
+								<input type="checkbox" name="promotion" value="1"/>promo_end_date
+								</td><br/>
+							</tr>
+						</table>
+					</div>
+					<hr/>				
 					<div>
 						<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 							<label for="time_info">Time</label>
