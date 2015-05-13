@@ -177,6 +177,14 @@
 								{
 									if($store == 'none')
 									{
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
 										
 										$query = "select sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key;";
 										$result = $conn->query($query);
@@ -203,7 +211,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -230,7 +247,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -257,7 +283,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -284,7 +319,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -318,7 +362,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.description;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -345,7 +398,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.description, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -374,7 +436,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.description, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -403,7 +474,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.description, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -432,7 +512,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.description, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -465,7 +554,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.department;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -492,7 +590,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.department, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -521,7 +628,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.department, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -550,7 +666,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.department, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -579,7 +704,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.department, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -612,7 +746,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.subcategory;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -639,7 +782,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.subcategory, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -668,7 +820,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.subcategory, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -697,7 +858,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.subcategory, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -726,7 +896,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.subcategory, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -759,7 +938,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.category;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -786,7 +974,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.category, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -815,7 +1012,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.category, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -844,7 +1050,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.category, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -873,7 +1088,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by p.category, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -909,21 +1133,15 @@
 								{
 									if($store == 'none')
 									{
-									//slice & dice
-							$filter;
-							if ($_POST['slice'] != "")
-							{
-								$filter = 'AND '.$_POST['slice'];
-								echo "test";
-							} else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
-							{
-								$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
-								echo "test2";
-							}
-							else
-							{
-								$filter = '';
-							}
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+										
 										$query = "select t.date, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date;";
 										echo $query;
 										$result = $conn->query($query);
@@ -952,7 +1170,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.date, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -981,7 +1208,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.date, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1010,7 +1246,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.date, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1039,7 +1284,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.date, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1075,7 +1329,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.date, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.description;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1104,7 +1367,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.date, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.description, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1135,7 +1407,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.date, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.description, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1166,7 +1447,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.date, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.description, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1197,7 +1487,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.date, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.description, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1232,7 +1531,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.date, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.department;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1261,7 +1569,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.date, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.department, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1292,7 +1609,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.date, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.department, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1323,7 +1649,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.date, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.department, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1354,7 +1689,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.date, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.department, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1388,7 +1732,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.date, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.subcategory;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1417,7 +1770,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.date, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.subcategory, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1448,7 +1810,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.date, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.subcategory, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1479,7 +1850,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.date, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.subcategory, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1510,7 +1890,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.date, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.subcategory, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1544,7 +1933,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.date, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.category;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1573,7 +1971,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.date, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.category, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1604,7 +2011,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.date, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.category, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1635,7 +2051,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.date, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.category, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1666,7 +2091,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.date, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.date, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.date, p.category, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1704,7 +2138,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.month, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1731,7 +2174,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.month, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1760,7 +2212,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.month, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1789,7 +2250,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.month, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1818,7 +2288,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.month, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1854,7 +2333,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.month, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.description;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1883,7 +2371,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.month, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.description, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1914,7 +2411,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.month, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.description, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1945,7 +2451,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.month, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.description, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -1976,7 +2491,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.month, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.description, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2011,7 +2535,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.month, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.department;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2040,7 +2573,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.month, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.department, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2071,7 +2613,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.month, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.department, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2102,7 +2653,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.month, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.department, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2133,7 +2693,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.month, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.department, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2167,7 +2736,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.month, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.subcategory;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2196,7 +2774,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.month, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.subcategory, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2227,7 +2814,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.month, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.subcategory, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2258,7 +2854,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.month, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.subcategory, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2289,7 +2894,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.month, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.subcategory, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2323,7 +2937,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.month, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.category;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2352,7 +2975,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.month, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.category, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2383,7 +3015,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.month, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.category, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2414,7 +3055,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.month, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.category, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2445,7 +3095,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.month, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.month, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.month, p.category, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2483,7 +3142,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.fiscal_period, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2510,7 +3178,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.fiscal_period, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2539,7 +3216,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.fiscal_period, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2568,7 +3254,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.fiscal_period, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2597,7 +3292,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.fiscal_period, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2633,7 +3337,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.fiscal_period, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.description;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2662,7 +3375,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.fiscal_period, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.description, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2693,7 +3415,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.fiscal_period, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.description, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2724,7 +3455,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.fiscal_period, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.description, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2755,7 +3495,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.fiscal_period, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.description, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2790,7 +3539,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.fiscal_period, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.department;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2819,7 +3577,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.fiscal_period, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.department, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2850,7 +3617,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.fiscal_period, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.department, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2881,7 +3657,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.fiscal_period, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.department, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2912,7 +3697,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.fiscal_period, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.department, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2946,7 +3740,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.fiscal_period, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.subcategory;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -2975,7 +3778,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.fiscal_period, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.subcategory, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3006,7 +3818,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.fiscal_period, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.subcategory, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3037,7 +3858,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.fiscal_period, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.subcategory, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3068,7 +3898,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.fiscal_period, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.subcategory, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3102,7 +3941,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.fiscal_period, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.category;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3131,7 +3979,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.fiscal_period, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.category, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3162,7 +4019,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.fiscal_period, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.category, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3193,7 +4059,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.fiscal_period, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.category, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3224,7 +4099,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.fiscal_period, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.fiscal_period, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.fiscal_period, p.category, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3262,7 +4146,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.year, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year;";
 										$result = $conn->query($query);
 										//var_dump($result);
 
@@ -3289,7 +4182,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.year, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3318,7 +4220,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.year, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3347,7 +4258,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.year, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3376,7 +4296,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.year, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3412,7 +4341,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.year, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.description;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3441,7 +4379,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.year, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.description, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3472,7 +4419,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.year, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.description, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3503,7 +4459,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.year, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.description, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3534,7 +4499,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.year, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.description, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3569,7 +4543,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.year, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.department;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3598,7 +4581,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.year, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.department, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3629,7 +4621,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.year, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.department, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3660,7 +4661,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.year, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.department, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3691,7 +4701,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.year, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.department, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3725,7 +4744,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.year, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.subcategory;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3754,7 +4782,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.year, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.subcategory, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3785,7 +4822,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.year, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.subcategory, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3816,7 +4862,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.year, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.subcategory, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3847,7 +4902,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.year, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.subcategory, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3881,7 +4945,16 @@
 								{
 									if($store == 'none')
 									{
-										$query = "select t.year, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.category;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3910,7 +4983,16 @@
 									}
 									else if($store == 'name')
 									{
-										$query = "select t.year, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.name;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.category, s.name;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3941,7 +5023,16 @@
 									}
 									else if($store == 'county')
 									{
-										$query = "select t.year, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.store_county;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.category, s.store_county;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -3972,7 +5063,16 @@
 									}
 									else if($store == 'state')
 									{
-										$query = "select t.year, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.store_state;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.category, s.store_state;";
 										$result = $conn->query($query);
 										var_dump($result);
 
@@ -4003,7 +5103,16 @@
 									}
 									else if($store == 'region')
 									{
-										$query = "select t.year, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.sales_region;";
+										//slice & dice
+										$filter;
+										if ($_POST['slice'] != "")
+											$filter = 'AND '.$_POST['slice'];
+										else if($_POST['dice1'] != "" && $_POST['dice2'] != "")
+											$filter = 'AND '.$_POST['dice1'].' AND '.$_POST['dice2'];
+										else
+											$filter = '';
+											
+										$query = "select t.year, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key ".$filter." group by t.year, p.category, s.sales_region;";
 										$result = $conn->query($query);
 										var_dump($result);
 
