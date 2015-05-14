@@ -117,14 +117,14 @@
 				<hr/>
 
 				<p>
-					Look things are things. 
+					
 				</p>
 				<div id="tablearea">
 					<?php
 						if(!empty($_POST))
 						{
 							//echo "THINGS. HAPPENED.";
-							//var_dump($_POST);
+							//// var_dump($_POST);
 
 							// "check_time" "check_product" "check_store" "check_units"  
 							// "check_customers" "check_revenue" "check_profit" 
@@ -171,7 +171,7 @@
 										{
 											$query = "select sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -442,7 +442,7 @@
 										{
 											$query = "select s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -1016,7 +1016,7 @@
 										{
 											$query = "select s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -1590,7 +1590,7 @@
 										{
 											$query = "select s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -2164,7 +2164,7 @@
 										{
 											$query = "select s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -2741,7 +2741,7 @@
 										{
 											$query = "select p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -3050,7 +3050,7 @@
 										{
 											$query = "select p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -3694,7 +3694,7 @@
 										{
 											$query = "select p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -4338,7 +4338,7 @@
 										{
 											$query = "select p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -4982,7 +4982,7 @@
 										{
 											$query = "select p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.description, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -5630,7 +5630,7 @@
 										{
 											$query = "select p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -5939,7 +5939,7 @@
 										{
 											$query = "select p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -6583,7 +6583,7 @@
 										{
 											$query = "select p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -7227,7 +7227,7 @@
 										{
 											$query = "select p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -7871,7 +7871,7 @@
 										{
 											$query = "select p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.department, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -8519,7 +8519,7 @@
 										{
 											$query = "select p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -8828,7 +8828,7 @@
 										{
 											$query = "select p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -9472,7 +9472,7 @@
 										{
 											$query = "select p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -10116,7 +10116,7 @@
 										{
 											$query = "select p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -10760,7 +10760,7 @@
 										{
 											$query = "select p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.subcategory, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -11408,7 +11408,7 @@
 										{
 											$query = "select p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -11717,7 +11717,7 @@
 										{
 											$query = "select p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -12361,7 +12361,7 @@
 										{
 											$query = "select p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -13005,7 +13005,7 @@
 										{
 											$query = "select p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -13649,7 +13649,7 @@
 										{
 											$query = "select p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by p.category, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -14300,7 +14300,7 @@
 										{
 											$query = "select t.date, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -14609,7 +14609,7 @@
 										{
 											$query = "select t.date, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -15261,7 +15261,7 @@
 										{
 											$query = "select t.date, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -15913,7 +15913,7 @@
 										{
 											$query = "select t.date, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -16565,7 +16565,7 @@
 										{
 											$query = "select t.date, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -17224,7 +17224,7 @@
 										{
 											$query = "select t.date, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -17566,7 +17566,7 @@
 										{
 											$query = "select t.date, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -18282,7 +18282,7 @@
 										{
 											$query = "select t.date, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -18997,7 +18997,7 @@
 										{
 											$query = "select t.date, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -19713,7 +19713,7 @@
 										{
 											$query = "select t.date, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.description, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -20436,7 +20436,7 @@
 										{
 											$query = "select t.date, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -20778,7 +20778,7 @@
 										{
 											$query = "select t.date, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -21494,7 +21494,7 @@
 										{
 											$query = "select t.date, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -22209,7 +22209,7 @@
 										{
 											$query = "select t.date, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -22925,7 +22925,7 @@
 										{
 											$query = "select t.date, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.department, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -23648,7 +23648,7 @@
 										{
 											$query = "select t.date, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -23990,7 +23990,7 @@
 										{
 											$query = "select t.date, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -24706,7 +24706,7 @@
 										{
 											$query = "select t.date, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -25421,7 +25421,7 @@
 										{
 											$query = "select t.date, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -26137,7 +26137,7 @@
 										{
 											$query = "select t.date, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.subcategory, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -26860,7 +26860,7 @@
 										{
 											$query = "select t.date, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -27202,7 +27202,7 @@
 										{
 											$query = "select t.date, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -27918,7 +27918,7 @@
 										{
 											$query = "select t.date, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -28633,7 +28633,7 @@
 										{
 											$query = "select t.date, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -29349,7 +29349,7 @@
 										{
 											$query = "select t.date, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.date, p.category, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -30075,7 +30075,7 @@
 										{
 											$query = "select t.month, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -30384,7 +30384,7 @@
 										{
 											$query = "select t.month, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -31036,7 +31036,7 @@
 										{
 											$query = "select t.month, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -31688,7 +31688,7 @@
 										{
 											$query = "select t.month, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -32340,7 +32340,7 @@
 										{
 											$query = "select t.month, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -32999,7 +32999,7 @@
 										{
 											$query = "select t.month, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -33341,7 +33341,7 @@
 										{
 											$query = "select t.month, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -34057,7 +34057,7 @@
 										{
 											$query = "select t.month, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -34772,7 +34772,7 @@
 										{
 											$query = "select t.month, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -35488,7 +35488,7 @@
 										{
 											$query = "select t.month, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.description, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -36211,7 +36211,7 @@
 										{
 											$query = "select t.month, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -36553,7 +36553,7 @@
 										{
 											$query = "select t.month, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -37269,7 +37269,7 @@
 										{
 											$query = "select t.month, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -37984,7 +37984,7 @@
 										{
 											$query = "select t.month, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -38700,7 +38700,7 @@
 										{
 											$query = "select t.month, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.department, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -39423,7 +39423,7 @@
 										{
 											$query = "select t.month, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -39765,7 +39765,7 @@
 										{
 											$query = "select t.month, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -40481,7 +40481,7 @@
 										{
 											$query = "select t.month, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -41196,7 +41196,7 @@
 										{
 											$query = "select t.month, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -41912,7 +41912,7 @@
 										{
 											$query = "select t.month, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.subcategory, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -42635,7 +42635,7 @@
 										{
 											$query = "select t.month, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -42977,7 +42977,7 @@
 										{
 											$query = "select t.month, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -43693,7 +43693,7 @@
 										{
 											$query = "select t.month, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -44408,7 +44408,7 @@
 										{
 											$query = "select t.month, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -45124,7 +45124,7 @@
 										{
 											$query = "select t.month, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.month, p.category, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -45850,7 +45850,7 @@
 										{
 											$query = "select t.fiscal_period, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -46159,7 +46159,7 @@
 										{
 											$query = "select t.fiscal_period, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -46811,7 +46811,7 @@
 										{
 											$query = "select t.fiscal_period, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -47463,7 +47463,7 @@
 										{
 											$query = "select t.fiscal_period, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -48115,7 +48115,7 @@
 										{
 											$query = "select t.fiscal_period, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -48774,7 +48774,7 @@
 										{
 											$query = "select t.fiscal_period, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -49116,7 +49116,7 @@
 										{
 											$query = "select t.fiscal_period, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -49832,7 +49832,7 @@
 										{
 											$query = "select t.fiscal_period, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -50547,7 +50547,7 @@
 										{
 											$query = "select t.fiscal_period, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -51263,7 +51263,7 @@
 										{
 											$query = "select t.fiscal_period, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.description, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -51986,7 +51986,7 @@
 										{
 											$query = "select t.fiscal_period, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -52328,7 +52328,7 @@
 										{
 											$query = "select t.fiscal_period, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -53044,7 +53044,7 @@
 										{
 											$query = "select t.fiscal_period, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -53759,7 +53759,7 @@
 										{
 											$query = "select t.fiscal_period, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -54475,7 +54475,7 @@
 										{
 											$query = "select t.fiscal_period, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.department, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -55198,7 +55198,7 @@
 										{
 											$query = "select t.fiscal_period, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -55540,7 +55540,7 @@
 										{
 											$query = "select t.fiscal_period, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -56256,7 +56256,7 @@
 										{
 											$query = "select t.fiscal_period, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -56971,7 +56971,7 @@
 										{
 											$query = "select t.fiscal_period, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -57687,7 +57687,7 @@
 										{
 											$query = "select t.fiscal_period, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.subcategory, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -58410,7 +58410,7 @@
 										{
 											$query = "select t.fiscal_period, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -58752,7 +58752,7 @@
 										{
 											$query = "select t.fiscal_period, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -59468,7 +59468,7 @@
 										{
 											$query = "select t.fiscal_period, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -60183,7 +60183,7 @@
 										{
 											$query = "select t.fiscal_period, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -60899,7 +60899,7 @@
 										{
 											$query = "select t.fiscal_period, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.fiscal_period, p.category, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -61625,7 +61625,7 @@
 										{
 											$query = "select t.year, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -61934,7 +61934,7 @@
 										{
 											$query = "select t.year, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -62586,7 +62586,7 @@
 										{
 											$query = "select t.year, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -63238,7 +63238,7 @@
 										{
 											$query = "select t.year, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -63890,7 +63890,7 @@
 										{
 											$query = "select t.year, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -64549,7 +64549,7 @@
 										{
 											$query = "select t.year, p.description, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -64891,7 +64891,7 @@
 										{
 											$query = "select t.year, p.description, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -65607,7 +65607,7 @@
 										{
 											$query = "select t.year, p.description, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -66322,7 +66322,7 @@
 										{
 											$query = "select t.year, p.description, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -67038,7 +67038,7 @@
 										{
 											$query = "select t.year, p.description, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.description, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -67761,7 +67761,7 @@
 										{
 											$query = "select t.year, p.department, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -68103,7 +68103,7 @@
 										{
 											$query = "select t.year, p.department, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -68819,7 +68819,7 @@
 										{
 											$query = "select t.year, p.department, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -69534,7 +69534,7 @@
 										{
 											$query = "select t.year, p.department, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -70250,7 +70250,7 @@
 										{
 											$query = "select t.year, p.department, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.department, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -70973,7 +70973,7 @@
 										{
 											$query = "select t.year, p.subcategory, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -71315,7 +71315,7 @@
 										{
 											$query = "select t.year, p.subcategory, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -72031,7 +72031,7 @@
 										{
 											$query = "select t.year, p.subcategory, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -72746,7 +72746,7 @@
 										{
 											$query = "select t.year, p.subcategory, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -73462,7 +73462,7 @@
 										{
 											$query = "select t.year, p.subcategory, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.subcategory, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -74185,7 +74185,7 @@
 										{
 											$query = "select t.year, p.category, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -74527,7 +74527,7 @@
 										{
 											$query = "select t.year, p.category, s.name, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.name;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -75243,7 +75243,7 @@
 										{
 											$query = "select t.year, p.category, s.store_county, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.store_county;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -75958,7 +75958,7 @@
 										{
 											$query = "select t.year, p.category, s.store_state, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.store_state;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{
@@ -76674,7 +76674,7 @@
 										{
 											$query = "select t.year, p.category, s.sales_region, sum(sf.unit_sales) total_unit_sold, sum(customer_count) customer_count, sum(sf.dollar_sales) revenue, (sum(sf.dollar_sales) - sum(sf.dollar_cost)) profit from sales_fact sf, Product p, Store s, Time t, Promotion pr where sf.product_key = p.product_key and sf.promotion_key = pr.promotion_key and sf.store_key = s.store_key and sf.time_key = t.time_key group by t.year, p.category, s.sales_region;";
 											$result = $conn->query($query);
-											var_dump($result);
+											// var_dump($result);
 
 											if ($result->num_rows > 0) 
 											{

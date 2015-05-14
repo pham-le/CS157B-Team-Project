@@ -39,13 +39,12 @@
 					$('#rollup_time').click(function()
 					{
 						//$( "#tablearea" ).html("");
-						$("#tablearea").html("<?php include('rollup_time.php'); ?> ");
-						//$("#tablearea").html("<?php include('set_time_fiscal.php'); ?> ");
+						$("#tablearea").html("<?php include('rollup_time.php')  ?> ");
 					});			
 
 					$('#rollup_store').click(function()
 					{
-						$("#tablearea").html("<?php include('rollup_store.php'); ?> ");
+						//$("#tablearea").html("<?php /*include('rollup_store.php'); */?> ");
 					});	
 				});
 			</script>

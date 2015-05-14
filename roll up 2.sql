@@ -1,5 +1,5 @@
 /*
-ROLL UP ONCE FROM BASE CUBE
+ROLL UP TWICE FROM BASE CUBE
 product = department -> none
 time = quarter -> year
 store = sales_region -> none

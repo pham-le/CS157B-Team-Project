@@ -21,11 +21,17 @@ div, p
 	width: 850px;
 	margin: 0 auto;
 }
-
+#basecube
+{}
 #rollup_options, #drilldown_options
 {
 	width: 850;
 	margin: 0 auto;
+
+}
+
+.dropdown{
+	display: inline-block;
 }
 
 #rollup_options
@@ -72,13 +78,13 @@ div, p
 .control
 {
 	display: inline-block;
-	margin: 10px;
 	background-color: #7AA3CC;
 	width: 120px;
 	height: 20px;
 	font-size: 18px;
 	padding: 20px 10px 20px 10px;
 	border: 1px solid #627383;
+	margin: 0 auto;
 }
 
 .control span.one
